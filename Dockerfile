@@ -27,11 +27,11 @@ ENV ROS_DOMAIN_ID=0
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ENV TURTLEBOT3_MODEL=burger
 ENV LDS_MODEL=LDS-02
-RUN mkdir -p /ros2_ws
+RUN mkdir -p /turtlebot3_ws
 
 # Source ROS 2 entrypoint globally
 RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
-RUN echo "source ~/turtlebot3_ws/install/setup.bash" >> /root/.bashrc
+RUN echo "source /turtlebot3_ws/install/setup.bash" >> /root/.bashrc
 
-WORKDIR /ros2_ws
+WORKDIR /turtlebot3_ws
 CMD ["/bin/bash"]

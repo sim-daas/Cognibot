@@ -5,8 +5,8 @@ HOST_WS_PATH="$HOME/turtlebot3_ws"
 
 # 1. Identify Devices Dynamically
 OPENCR_PORT=$(find /dev -name "ttyACM*" | head -n 1)
-LDS_PORT=$(find /dev -name "ttyUSB*" | head -n 1)
-CAMERA_PORT=$(find /dev -name "video*" | head -n 1)
+LDS_PORT=/dev/tb3_lidar
+CAMERA_PORT=$(v4l2-ctl --list-devices | awk '/rpi-hevc-dec/{getline; print $1}')
 
 # 2. Validation Check
 if [ -z "$OPENCR_PORT" ]; then echo "WARNING: OpenCR not found on ttyACM*"; fi
@@ -36,6 +36,6 @@ docker run -it --rm \
     -e OPENCR_PORT="$OPENCR_PORT" \
     -e LDS_PORT="$LDS_PORT" \
     -e CAMERA_PORT="$CAMERA_PORT" \
-    -v "$HOST_WS_PATH:/ros2_ws" \
+    -v "$HOST_WS_PATH:/turtlebot3_ws" \
     -v /dev:/dev \
     tb3_humble_base
