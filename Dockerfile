@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables natively
-ENV ROS_DOMAIN_ID=0
+ENV ROS_DOMAIN_ID=184
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ENV TURTLEBOT3_MODEL=burger
 ENV LDS_MODEL=LDS-02
